@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.3'
+	id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Devtools를 추가하면 서버를 재시작안해도되요. 바로 반영되요
+	developmentOnly 'org.springframework.boot:spring-boot-devtools' 
+	// lombok
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
