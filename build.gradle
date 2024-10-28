@@ -23,10 +23,14 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	// Devtools를 추가하면 서버를 재시작안해도되요. 바로 반영되요
 	developmentOnly 'org.springframework.boot:spring-boot-devtools' 
-	// lombok은 vsCode 익스텐션 사용
+	
 	runtimeOnly 'com.h2database:h2' //  h2 데이터베이스 사용 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' 
+   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+    // lombock
+	  compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
 }
 
 tasks.named('test') {
