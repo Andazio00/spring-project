@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
+
 @RequiredArgsConstructor
 @Controller
 public class QuestionController {
@@ -77,4 +79,30 @@ public class QuestionController {
         return "redirect:/question/lists"; // 삭제 후 목록으로 리다이렉트
     }
 
+
+    // 수정기능으로 접근
+    @GetMapping("/question/modify/{id}")
+    public String questionModify(@PathVariable("id") Integer id, Model model) {
+        
+        model.addAttribute("question",  questionService.questionView(id));
+
+        return "questionModify";
+    }
+    
+
+
+    @PostMapping("/question/update/{id}")
+    public String questionUpdate(@PathVariable("id") Integer id, Question question ) {
+        
+        Question questionTemp = questionService.questionView(id);
+
+        // 제목 , 내용 수정
+        questionTemp.setSubject(question.getSubject());
+        questionTemp.setContent(question.getContent());
+        
+        questionService.write(questionTemp);
+
+        return "redirect:/question/lists";
+    }
+    
 }

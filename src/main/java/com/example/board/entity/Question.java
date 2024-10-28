@@ -37,6 +37,9 @@ public class Question {
    @Column(length = 20)
     private String author;
 
+    
+    
+
     private LocalDateTime createDate;    
 
     

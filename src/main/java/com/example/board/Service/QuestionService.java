@@ -36,6 +36,9 @@ public class QuestionService {
       questionRepository.deleteById(id);
     }
     
+    public Question questionView(Integer id){
+        return questionRepository.findById(id).get();
+    }
 
 
     public Question getQuestion(Integer id){
@@ -47,4 +50,7 @@ public class QuestionService {
         }
     }
 
+    public void write(Question question){
+        questionRepository.save(question);
+    }
 }
